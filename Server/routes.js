@@ -9,6 +9,7 @@ const router = express.Router();
 dotenv.config({ path: "./config.env" });
 const adminuser=process.env.ADMIN_USER
 const adminpassword=process.env.ADMIN_PASSWORD
+
 router.post("/api/signup", async (req, res) => {
   const { name, contact, email, password, course, year, room } = req.body;
   const user_exist = await User.findOne({ email: email });
@@ -47,10 +48,7 @@ else{
 
   const email_exist = await User.findOne({ email: email });
  
-
-
-
-  console.log(email_exist);
+ console.log(email_exist);
   if (email_exist) {
     const password_correct = await User.findOne({
       email: email,
